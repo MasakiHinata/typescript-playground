@@ -1,26 +1,25 @@
 # npm init
 
 # graphql
-npm install --save graphql
+yarn add graphql
 
 # codegen
-npm install --save-dev @graphql-codegen/cli 
-npm install --save-dev @graphql-codegen/typescript @graphql-codegen/typescript-resolvers @graphql-codegen/typescript-operations
+yarn add -D @graphql-codegen/cli
+yarn add -D @graphql-codegen/typescript @graphql-codegen/typescript-operations @graphql-codegen/typescript-resolvers
 
 # express
-npm install express express-graphql
-npm install -D @types/express
+yarn add @types/express express express-graphql
 
 # nodemon
-npm install --save-dev nodemon
+yarn add nodemon
 
 # typescript
-npm install typescript
+yarn add typescript
 ./node_modules/.bin/tsc --version
 ./node_modules/.bin/tsc --init
 
 #webpack
-npm install --save-dev webpack webpack-cli ts-loader
+yarn add webpack webpack-cli --dev
 
 # codegenの初期化
-npx graphql-codegen init
+yarn graphql-codegen init
