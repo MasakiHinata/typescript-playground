@@ -1,0 +1,12 @@
+type Author {
+    id: Int!,
+    name: String!,
+    books: [Book]
+}
+
+type Book {
+    id: Int!,
+    name: String!,
+    authorId: Int!,
+    author(authorId: Int!): Author
+}
