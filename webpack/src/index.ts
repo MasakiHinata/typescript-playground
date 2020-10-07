@@ -1,5 +1,5 @@
-import { Wheel } from './wheel.js'
-import Car from './car.js'
+import { Wheel } from './wheel'
+import Car from './car'
 
 const wheel = new Wheel(1.0);
 const car = new Car(wheel);
