@@ -10,3 +10,12 @@ type Book {
     authorId: Int!,
     author(authorId: Int!): Author
 }
+
+type Query {
+    books: [Book],
+    authors: [Author]
+}
+
+schema Schema{
+    query: Query
+}

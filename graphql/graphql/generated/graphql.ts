@@ -31,6 +31,12 @@ export type BookAuthorArgs = {
   authorId: Scalars['Int'];
 };
 
+export type Query = {
+  __typename?: 'Query';
+  books?: Maybe<Array<Maybe<Book>>>;
+  authors?: Maybe<Array<Maybe<Author>>>;
+};
+
 
 
 export type ResolverTypeWrapper<T> = Promise<T> | T;
@@ -113,6 +119,7 @@ export type ResolversTypes = {
   Int: ResolverTypeWrapper<Scalars['Int']>;
   String: ResolverTypeWrapper<Scalars['String']>;
   Book: ResolverTypeWrapper<Book>;
+  Query: ResolverTypeWrapper<{}>;
   Boolean: ResolverTypeWrapper<Scalars['Boolean']>;
 };
 
@@ -122,6 +129,7 @@ export type ResolversParentTypes = {
   Int: Scalars['Int'];
   String: Scalars['String'];
   Book: Book;
+  Query: {};
   Boolean: Scalars['Boolean'];
 };
 
@@ -140,9 +148,15 @@ export type BookResolvers<ContextType = any, ParentType extends ResolversParentT
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
+export type QueryResolvers<ContextType = any, ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query']> = {
+  books?: Resolver<Maybe<Array<Maybe<ResolversTypes['Book']>>>, ParentType, ContextType>;
+  authors?: Resolver<Maybe<Array<Maybe<ResolversTypes['Author']>>>, ParentType, ContextType>;
+};
+
 export type Resolvers<ContextType = any> = {
   Author?: AuthorResolvers<ContextType>;
   Book?: BookResolvers<ContextType>;
+  Query?: QueryResolvers<ContextType>;
 };
 
 
