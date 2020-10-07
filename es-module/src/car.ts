@@ -1,5 +1,5 @@
 import { Wheel } from './wheel.js'
-export class Car {
+export default class Car {
     constructor(public wheel: Wheel){}
 
     status(): String {
