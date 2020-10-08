@@ -2,10 +2,12 @@
   "devDependencies": {
     "ts-loader": "^8.0.4",
     "webpack": "^4.44.2",
-    "webpack-cli": "^3.3.12"
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.0"
   },
   "scripts": {
-    "build": "webpack"
+    "build": "webpack",
+    "start": "webpack-dev-server"
   },
   "dependencies": {
     "typescript": "^4.0.3"
