@@ -44,16 +44,12 @@ webpackでプロジェクトを作るときは、
 </html>
 ```
 ## webpack
-js,tsファイルだけでなくhtmlファイルもバンドルする必要がある。
-```shell
-yarn add -D html-webpack-plugin
-yarn add -D html-loader
-```
+js,tsファイルだけでなくhtmlファイルもバンドルする必要があり、
+ファイルに対応したloaderが提供されている。
 - webpack.config.js
   ```javascript
   const path = require('path');
-  const HtmlWebpackPlugin = require('html-webpack-plugin')
-
+  
   module.exports = {
     mode: "development",
     context: path.resolve(__dirname, 'src'),
@@ -76,11 +72,56 @@ yarn add -D html-loader
     },
     resolve: {
       extensions: [".ts", ".tsx", ".js"]
-    },
-    plugins: [
-      new HtmlWebpackPlugin({
-        template: "./html/index.html"
-      })
-    ]
+    }
   };
+  ```
+- ### htmlをバンドルする
+  ```shell
+  yarn add -D html-webpack-plugin
+  yarn add -D html-loader
+  ```
+  ```javascript
+  const HtmlWebpackPlugin = require('html-webpack-plugin')
+
+  module.exports = {
+    /*  ...   */
+    module: {
+      rules: [
+        {
+          test: /\.html$/,
+          loader: "html-loader"
+        },
+      ]
+    },
+    /*  ...   */
+    plugins: [
+        new HtmlWebpackPlugin({
+          template: "./html/index.html"
+        })
+      ]
+  }
+  ```
+- ### cssをバンドルする
+  ```javascript
+  module.exports = {
+    module: {
+      rules: [
+        {
+          test: /\.css$/,
+          use: ['style-loader', 'css-loader']
+        },
+    },
+  }
+  ```
+  ### 他のファイル(svgなど)をバンドルする
+  ```javascript
+  module.exports = {
+    module: {
+      rules: [
+        { 
+          test: /\.(ttf|eot|jpe?g|png|gif|svg)?$/, 
+          loader: "file-loader" 
+        }
+    },
+  }
   ```
