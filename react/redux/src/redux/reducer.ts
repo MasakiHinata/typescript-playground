@@ -15,6 +15,10 @@ export const counterReducer = (state = initialState, action: CounterActions): Co
             return {
                 value: state.value + 1
             }
+        case "INCREMENT_BY_VALUE":
+            return {
+                value: state.value + action.value
+            }
         case DECREMENT:
             return {
                 value: state.value - 1

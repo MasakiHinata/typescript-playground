@@ -1,6 +1,6 @@
 import React from "react";
 import {useDispatch} from "react-redux";
-import {decrement, increment} from "../redux/actions";
+import {decrement, increment, incrementByTen} from "../redux/actions";
 
 export default function CounterDispatch() {
 
@@ -9,5 +9,6 @@ export default function CounterDispatch() {
     return (<>
         <input type={"button"} value={"+"} onClick={() => dispatch(increment())}/>
         <input type={"button"} value={"-"} onClick={() => dispatch(decrement())}/>
+        <input type={"button"} value={"+10"} onClick={() => dispatch(incrementByTen(10))}/>
     </>)
 }
